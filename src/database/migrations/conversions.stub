@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateReferralConversionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(config('referral.conversions_table_name'), function (Blueprint $table) {
+            $table->integer('visit_id')->unsigned();
+            $table->integer('convertible_id')->unsigned();
+            $table->string('convertible_type');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists(config('referral.conversions_table_name'));
+    }
+}

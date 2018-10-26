@@ -1,0 +1,32 @@
+{
+    "name": "ubrize/referral",
+    "type": "library",
+    "description": "",
+    "homepage": "https://github.com/ubrize/referral",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Uldis Brize",
+            "email": "ubrize@me.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.2|~5.3",
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+        "laravel/framework": "~5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ubrize\\Referral\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ubrize\\Referral\\ReferralServiceProvider"
+            ]
+        }
+    }
+}
