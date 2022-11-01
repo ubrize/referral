@@ -1,9 +1,10 @@
 <?php
 
-namespace Ubrize\Referral\Middleware;
+namespace Ubrize\Referral\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Ubrize\Referral\Visit;
 
 class CaptureReferralMiddleware
@@ -235,7 +236,7 @@ class CaptureReferralMiddleware
      */
     protected function findOrCreateTrackingCookieToken()
     {
-        $cookieToken = str_random(40);
+        $cookieToken = Str::random(40);
 
         if ($this->request->hasCookie(config('referral.cookie_name'))) {
             $cookieToken = $this->request->cookie(config('referral.cookie_name'));
@@ -258,7 +259,7 @@ class CaptureReferralMiddleware
 
         if ($landingPage) {
             return collect($blacklist)->filter(function ($pattern) use ($landingPage) {
-                return str_is($pattern, $landingPage);
+                return Str::is($pattern, $landingPage);
             })->isNotEmpty();
         } else {
             return $blacklist;
